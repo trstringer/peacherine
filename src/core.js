@@ -12,7 +12,7 @@ module.exports = (() => {
   };
 
   const testConnection = (connectionOptions, callback) => {
-    switch (connectionOptions.dataSoureType) {
+    switch (connectionOptions.dataSourceType) {
       case 'mssql':
         mssqlConnector.testConnection(connectionOptions, callback);
         break;

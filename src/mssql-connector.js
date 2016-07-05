@@ -2,7 +2,19 @@ const mssql = require('mssql');
 
 module.exports = (() => {
   const testConnection = (connectionOptions, callback) => {
-    callback(new Error('testing connection return'));
+    const mssqlConnectionOptions = {
+      user: connectionOptions.username,
+      password: connectionOptions.password,
+      server: connectionOptions.server,
+      database: connectionOptions.database,
+      options: {
+        encrypt: true
+      }
+    };
+    
+    const sqlConnection = new mssql.Connection(mssqlConnectionOptions);
+
+    sqlConnection.connect(callback);
   };
   
   return {

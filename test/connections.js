@@ -30,4 +30,21 @@ describe('connections functionality', () => {
       done();
     });
   });
+
+  it('should should successfully connect to mssql', (done) => {
+    const connectionOptions = {
+      dataSourceType: 'mssql',
+      username: '...username...',
+      password: '...password...',
+      server: '...server...',
+      database: '...database...'
+    };
+
+    core.testConnection(connectionOptions, (err) => {
+      if (err !== undefined && err !== null) {
+        assert.fail(0, 1, 'error on connection was expected to not error');
+      }
+      done();
+    });
+  });
 });

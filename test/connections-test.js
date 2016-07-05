@@ -1,5 +1,6 @@
 const assert = require('chai').assert;
 const core = require('../src/core');
+const config = require('./config');
 
 describe('connections functionality', () => {
   it('should fail connection to fake data source', (done) => {
@@ -32,13 +33,8 @@ describe('connections functionality', () => {
   });
 
   it('should should successfully connect to mssql', (done) => {
-    const connectionOptions = {
-      dataSourceType: 'mssql',
-      username: '...username...',
-      password: '...password...',
-      server: '...server...',
-      database: '...database...'
-    };
+    const connectionOptions = config.connections.filter(
+      (connection) => connection.dataSourceType === 'mssql')[0];
 
     core.testConnection(connectionOptions, (err) => {
       if (err !== undefined && err !== null) {

@@ -4,7 +4,8 @@
   "description": "Cross-platform cross-datasource querying",
   "main": "src/core.js",
   "scripts": {
-    "test": "mocha --timeout 120000"
+    "test": "mocha --timeout 120000",
+    "test-debug": "mocha --debug-brk"
   },
   "author": "Thomas Stringer",
   "license": "MIT",

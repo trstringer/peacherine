@@ -2,7 +2,7 @@ const assert = require('chai').assert;
 const core = require('../src/core');
 
 describe('connections functionality', () => {
-  it('should fail connection to unknown source', (done) => {
+  it('should fail connection to fake data source', (done) => {
     const connectionOptions = {
       dataSourceType: 'mssql',
       server: 'notreal',

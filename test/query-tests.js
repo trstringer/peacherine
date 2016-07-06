@@ -11,7 +11,7 @@ describe('querying', () => {
       query: 'SELECT object_id, name FROM sys.objects'
     };
 
-    core.query(connectionOptions, queryOptions, (err, results, rowsAffected) => {
+    core.execute(connectionOptions, queryOptions, (err, results, rowsAffected) => {
       if (err !== undefined && err !== null) {
         assert.fail(0, 1, 'error returned when querying mssql');
       }
@@ -31,7 +31,7 @@ describe('querying', () => {
       collection: 'testcollection01'
     };
 
-    core.query(connectionOptions, queryOptions, (err, results) => {
+    core.execute(connectionOptions, queryOptions, (err, results) => {
       if (err !== undefined && err !== null) {
         assert.fail(0, 1, `error returned querying documentdb: ${err.message}`);
       }
@@ -51,7 +51,7 @@ describe('querying', () => {
       }
     };
 
-    core.query(connectionOptions, queryOptions, (err, results) => {
+    core.execute(connectionOptions, queryOptions, (err, results) => {
       if (err !== undefined && err !== null) {
         assert.fail(0, 1, `error while inserting document in documentdb: ${err.message}`);
       }

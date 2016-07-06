@@ -26,13 +26,13 @@ module.exports = (() => {
     }
   };
 
-  const query = (connectionOptions, queryOptions, callback) => {
+  const execute = (connectionOptions, actionOptions, callback) => {
     switch (connectionOptions.dataSourceType) {
       case 'mssql':
-        mssqlConnector.query(connectionOptions, queryOptions, callback);
+        mssqlConnector.execute(connectionOptions, actionOptions, callback);
         break;
       case 'documentdb':
-        documentdbConnector.query(connectionOptions, queryOptions, callback);
+        documentdbConnector.execute(connectionOptions, actionOptions, callback);
         break;
       default:
         callback(new Error(`unknown data source type ${connectionOptions.dataSourceType}`));
@@ -43,6 +43,6 @@ module.exports = (() => {
   return {
     getDataSourceTypes,
     testConnection,
-    query
+    execute
   };
 })();

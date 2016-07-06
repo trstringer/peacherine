@@ -17,7 +17,7 @@ module.exports = (() => {
     sqlConnection.connect(callback);
   };
 
-  const query = (connectionOptions, queryOptions, callback) => {
+  const execute = (connectionOptions, actionOptions, callback) => {
     const mssqlConnectionOptions = {
       user: connectionOptions.username,
       password: connectionOptions.password,
@@ -36,13 +36,13 @@ module.exports = (() => {
       }
       else {
         let sqlRequest = new mssql.Request(sqlConnection);
-        sqlRequest.query(queryOptions.query, callback);
+        sqlRequest.query(actionOptions.query, callback);
       }
     });
   };
   
   return {
     testConnection,
-    query
+    execute
   };
 })();

@@ -23,8 +23,8 @@ module.exports = (() => {
     });
   };
 
-  const query = (connectionOptions, queryOptions, callback) => {
-    const collectionUrl = `dbs/${connectionOptions.database}/colls/${queryOptions.collection}`;
+  const execute = (connectionOptions, actionOptions, callback) => {
+    const collectionUrl = `dbs/${connectionOptions.database}/colls/${actionOptions.collection}`;
     const documentdbConnectionOptions = {
       endpoint: connectionOptions.endpoint,
       key: connectionOptions.key,
@@ -36,12 +36,12 @@ module.exports = (() => {
       { masterKey: documentdbConnectionOptions.key }
     );
 
-    client.queryDocuments(collectionUrl, queryOptions.query)
+    client.queryDocuments(collectionUrl, actionOptions.query)
       .toArray(callback);
   };
 
   return {
     testConnection,
-    query
+    execute
   };
 })();

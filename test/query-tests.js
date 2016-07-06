@@ -39,7 +39,23 @@ describe('querying', () => {
     });
   });
 
-  // it('should create document in documentdb', (done) => {
+  it('should create document in documentdb', (done) => {
+    const connectionOptions = configUtil.getConnectionBySourceType(config, 'documentdb');
 
-  // });
+    const queryOptions = {
+      operation: 'createDocument',
+      collection: 'testcollection01',
+      document: {
+        id: "3",
+        message: "test document creation"
+      }
+    };
+
+    core.query(connectionOptions, queryOptions, (err, results) => {
+      if (err !== undefined && err !== null) {
+        assert.fail(0, 1, `error while inserting document in documentdb: ${err.message}`);
+      }
+      done();
+    });
+  });
 });

@@ -32,12 +32,27 @@ describe('connections functionality', () => {
     });
   });
 
-  it('should should successfully connect to mssql', (done) => {
+  it('should successfully connect to mssql', (done) => {
     const connectionOptions = config.connections.filter(
-      (connection) => connection.dataSourceType === 'mssql')[0];
+      (connection) => connection.dataSourceType === 'mssql'
+    )[0];
 
     core.testConnection(connectionOptions, (err) => {
       if (err !== undefined && err !== null) {
+        assert.fail(0, 1, 'error on connection was expected to not error');
+      }
+      done();
+    });
+  });
+
+  it('should successfully connect to documentdb', (done) => {
+    const connectionOptions = config.connections.filter(
+      (connection) => connection.dataSourceType === 'documentdb'
+    )[0];
+    
+    core.testConnection(connectionOptions, (err) => {
+      if (err !== undefined && err !== null) {
+        console.log(err);
         assert.fail(0, 1, 'error on connection was expected to not error');
       }
       done();

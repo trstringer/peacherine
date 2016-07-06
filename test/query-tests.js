@@ -1,12 +1,11 @@
 const assert = require('chai').assert;
 const core = require('../src/core');
 const config = require('./config');
+const configUtil = require('./config-util');
 
 describe('querying', () => {
   it('should return data when querying mssql', (done) => {
-    const connectionOptions = config.connections.filter(
-      (connection) => connection.dataSourceType === 'mssql'
-    )[0];
+    const connectionOptions = configUtil.getConnectionBySourceType(config, 'mssql');
 
     const queryOptions = {
       query: 'SELECT object_id, name FROM sys.objects'
@@ -25,9 +24,7 @@ describe('querying', () => {
   });
 
   it('should return data when querying documentdb', (done) => {
-    const connectionOptions = config.connections.filter(
-      (connection) => connection.dataSourceType === 'documentdb'
-    )[0];
+    const connectionOptions = configUtil.getConnectionBySourceType(config, 'documentdb');
 
     const queryOptions = {
       query: 'SELECT * FROM c',
@@ -41,4 +38,8 @@ describe('querying', () => {
       done();
     });
   });
+
+  // it('should create document in documentdb', (done) => {
+
+  // });
 });

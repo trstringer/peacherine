@@ -8,7 +8,7 @@ describe('querying', () => {
       (connection) => connection.dataSourceType === 'mssql')[0];
 
     const queryOptions = {
-      query: 'select * from sys.objects'
+      query: 'select object_id, name from sys.objects'
     };
 
     core.query(connectionOptions, queryOptions, (err, recordset, rowsAffected) => {

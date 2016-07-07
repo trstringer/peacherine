@@ -64,7 +64,20 @@ module.exports = (() => {
   }
 
   function createDocument(connectionOptions, actionOptions, callback) {
+    const collectionUrl = getCollectionUrl(connectionOptions, actionOptions.collection);
 
+    const documentdbConnectionOptions = {
+      endpoint: connectionOptions.endpoint,
+      key: connectionOptions.key,
+      database: connectionOptions.database
+    };
+
+    const client = new DocumentClient(
+      documentdbConnectionOptions.endpoint,
+      { masterKey: documentdbConnectionOptions.key }
+    );
+
+    client.createDocument(collectionUrl, actionOptions.document, callback);
   }
 
   return {

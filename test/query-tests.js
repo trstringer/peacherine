@@ -7,11 +7,11 @@ describe('querying', () => {
   it('should return data when querying mssql', (done) => {
     const connectionOptions = configUtil.getConnectionBySourceType(config, 'mssql');
 
-    const queryOptions = {
+    const actionOptions = {
       query: 'SELECT object_id, name FROM sys.objects'
     };
 
-    core.execute(connectionOptions, queryOptions, (err, results, rowsAffected) => {
+    core.execute(connectionOptions, actionOptions, (err, results, rowsAffected) => {
       if (err !== undefined && err !== null) {
         assert.fail(0, 1, 'error returned when querying mssql');
       }
@@ -26,12 +26,12 @@ describe('querying', () => {
   it('should return data when querying documentdb', (done) => {
     const connectionOptions = configUtil.getConnectionBySourceType(config, 'documentdb');
 
-    const queryOptions = {
+    const actionOptions = {
       query: 'SELECT * FROM c',
       collection: 'testcollection01'
     };
 
-    core.execute(connectionOptions, queryOptions, (err, results) => {
+    core.execute(connectionOptions, actionOptions, (err, results) => {
       if (err !== undefined && err !== null) {
         assert.fail(0, 1, `error returned querying documentdb: ${err.message}`);
       }
@@ -42,7 +42,7 @@ describe('querying', () => {
   it('should create document in documentdb', (done) => {
     const connectionOptions = configUtil.getConnectionBySourceType(config, 'documentdb');
 
-    const queryOptions = {
+    const actionOptions = {
       operation: 'createDocument',
       collection: 'testcollection01',
       document: {
@@ -51,7 +51,7 @@ describe('querying', () => {
       }
     };
 
-    core.execute(connectionOptions, queryOptions, (err, results) => {
+    core.execute(connectionOptions, actionOptions, (err, results) => {
       if (err !== undefined && err !== null) {
         assert.fail(0, 1, `error while inserting document in documentdb: ${err.message}`);
       }

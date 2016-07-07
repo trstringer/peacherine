@@ -1,6 +1,15 @@
 # Syncopation
 
-## The cross-platform and multi-datasource query module
+***The cross-platform and multi-datasource query module***
+
+ - [Why?](#why)
+ - [Install](#install)
+ - Supported data sources
+  - SQL Server and SQL Azure
+  - Azure DocumentDB
+  - MongoDB
+  - MySQL
+ - [Test](#test)
 
 ### Why?
 
@@ -10,6 +19,46 @@ I think you should be able to query all mainstream data sources from any machine
 
 ```
 $ npm install syncopation
+```
+
+## Supported data sources
+
+### SQL Server and SQL Azure
+
+#### Run query
+
+```javascript
+// add code
+```
+
+### Azure DocumentDB
+
+#### Query collection
+
+```javascript
+// add code
+```
+
+#### Insert document in collection
+
+```javascript
+// add code
+```
+
+### MongoDB
+
+#### Run query
+
+```javascript
+// add code
+```
+
+### MySQL
+
+#### Run query
+
+```javascript
+// add code
 ```
 
 ### Test

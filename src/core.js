@@ -1,5 +1,6 @@
 const mssqlConnector = require('./mssql-connector');
 const documentdbConnector = require('./documentdb-connector');
+const mongodbConnector = require('./mongodb-connector');
 
 module.exports = (() => {
   const dataSourceTypes = [
@@ -20,6 +21,9 @@ module.exports = (() => {
       case 'documentdb':
         documentdbConnector.testConnection(connectionOptions, callback);
         break;
+      case 'mongodb':
+        mongodbConnector.testConnection(connectionOptions, callback);
+        break;
       default:
         callback(new Error(`unknown data source type ${connectionOptions.dataSoureType}`));
         break;
@@ -33,6 +37,9 @@ module.exports = (() => {
         break;
       case 'documentdb':
         documentdbConnector.execute(connectionOptions, actionOptions, callback);
+        break;
+      case 'mongodb':
+        mongodbConnector.execute(connectionOptions, actionOptions, callback);
         break;
       default:
         callback(new Error(`unknown data source type ${connectionOptions.dataSourceType}`));

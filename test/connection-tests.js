@@ -49,8 +49,18 @@ describe('connections functionality', () => {
     
     core.testConnection(connectionOptions, (err) => {
       if (err !== undefined && err !== null) {
-        console.log(err);
         assert.fail(0, 1, 'error on connection was expected to not error');
+      }
+      done();
+    });
+  });
+
+  it('should successfully connect to mongodb', (done) => {
+    const connectionOptions = configUtil.getConnectionBySourceType(config, 'mongodb');
+
+    core.testConnection(connectionOptions, (err) => {
+      if (err !== undefined && err !== null) {
+        assert.fail(0, 1, `error connecting to mongodb: ${err.message}`);
       }
       done();
     });

@@ -43,11 +43,13 @@ describe('querying', () => {
   it('should create document in documentdb', (done) => {
     const connectionOptions = configUtil.getConnectionBySourceType(config, 'documentdb');
 
+    const randomId = Math.floor(Math.random() * 10000000).toString();
+
     const actionOptions = {
       operation: 'createDocument',
       collection: 'testcollection01',
       document: {
-        id: "3",
+        id: randomId,
         message: "test document creation"
       }
     };
@@ -56,6 +58,23 @@ describe('querying', () => {
       if (err !== undefined && err !== null) {
         assert.fail(0, 1, `error while inserting document in documentdb: ${err.message}`);
       }
+      done();
+    });
+  });
+
+  it('should return documents when searching mongodb', (done) => {
+    const connectionOptions = configUtil.getConnectionBySourceType(config, 'mongodb');
+
+    const actionOptions = {
+      operation: 'queryCollection',
+      collection: 'testcollection01'
+    };
+
+    core.execute(connectionOptions, actionOptions, (err, results) => {
+      if (err !== undefined && err !== null) {
+        assert.fail(0, 1, `error while querying collection in mongodb: ${err.message}`);
+      }
+      assert.isTrue(results.length > 0);
       done();
     });
   });

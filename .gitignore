@@ -3,3 +3,4 @@ jsconfig.json
 .vscode/
 node_modules/
 test/config.js
+npm-debug.log

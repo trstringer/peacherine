@@ -14,12 +14,7 @@ module.exports = (() => {
     );
 
     client.readDatabase(`dbs/${documentdbConnectionOptions.database}`, (err, result) => {
-      if (err) {
-        callback(err);
-      }
-      else {
-        callback();
-      }
+      callback(err);
     });
   }
 

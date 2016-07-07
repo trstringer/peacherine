@@ -24,6 +24,12 @@ module.exports = {
       // 
       // todo: remove this non-default test dependency
       database: '...'
+    },
+    {
+      dataSourceType: 'mongodb',
+      host: '...',
+      port: 27017,
+      database: '...'
     }
   ]
 };

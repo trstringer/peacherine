@@ -5,10 +5,10 @@
  - [Why?](#why)
  - [Install](#install)
  - Supported data sources
-  - SQL Server and SQL Azure
-  - Azure DocumentDB
-  - MongoDB
-  - MySQL
+  - [SQL Server and SQL Azure](#sql-server-and-sql-azure)
+  - [Azure DocumentDB](#azure-documentdb)
+  - [MongoDB](#mongodb)
+  - [MySQL](#mysql)
  - [Test](#test)
 
 ### Why?

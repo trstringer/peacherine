@@ -27,6 +27,7 @@ describe('querying', () => {
     const connectionOptions = configUtil.getConnectionBySourceType(config, 'documentdb');
 
     const actionOptions = {
+      operation: 'queryCollection',
       query: 'SELECT * FROM c',
       collection: 'testcollection01'
     };

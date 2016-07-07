@@ -1,7 +1,7 @@
 const mssql = require('mssql');
 
 module.exports = (() => {
-  const testConnection = (connectionOptions, callback) => {
+  function testConnection(connectionOptions, callback) {
     const mssqlConnectionOptions = {
       user: connectionOptions.username,
       password: connectionOptions.password,
@@ -15,9 +15,9 @@ module.exports = (() => {
     const sqlConnection = new mssql.Connection(mssqlConnectionOptions);
 
     sqlConnection.connect(callback);
-  };
+  }
 
-  const execute = (connectionOptions, actionOptions, callback) => {
+  function execute(connectionOptions, actionOptions, callback) {
     const mssqlConnectionOptions = {
       user: connectionOptions.username,
       password: connectionOptions.password,
@@ -39,7 +39,7 @@ module.exports = (() => {
         sqlRequest.query(actionOptions.query, callback);
       }
     });
-  };
+  }
   
   return {
     testConnection,

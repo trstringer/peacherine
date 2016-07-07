@@ -8,11 +8,11 @@ module.exports = (() => {
     'documentdb'
   ];
 
-  const getDataSourceTypes = () => {
+  function getDataSourceTypes() {
     return dataSourceTypes;
-  };
+  }
 
-  const testConnection = (connectionOptions, callback) => {
+  function testConnection(connectionOptions, callback) {
     switch (connectionOptions.dataSourceType) {
       case 'mssql':
         mssqlConnector.testConnection(connectionOptions, callback);
@@ -24,9 +24,9 @@ module.exports = (() => {
         callback(new Error(`unknown data source type ${connectionOptions.dataSoureType}`));
         break;
     }
-  };
+  }
 
-  const execute = (connectionOptions, actionOptions, callback) => {
+  function execute(connectionOptions, actionOptions, callback) {
     switch (connectionOptions.dataSourceType) {
       case 'mssql':
         mssqlConnector.execute(connectionOptions, actionOptions, callback);
@@ -38,7 +38,7 @@ module.exports = (() => {
         callback(new Error(`unknown data source type ${connectionOptions.dataSourceType}`));
         break;
     }
-  };
+  }
 
   return {
     getDataSourceTypes,

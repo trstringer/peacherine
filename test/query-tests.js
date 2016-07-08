@@ -94,7 +94,7 @@ describe('querying', () => {
     const actionOptions = {
       operation: 'queryCollection',
       collection: 'testcollection01',
-      condition: {
+      filter: {
         id: 1
       }
     };
@@ -125,6 +125,35 @@ describe('querying', () => {
     core.execute(connectionOptions, actionOptions, (err) => {
       if (err !== undefined && err !== null) {
         assert.fail(0, 1, `error while creating document in mongodb: ${err.message}`);
+      }
+      done();
+    });
+  });
+
+  it('should update a document in a mongodb collection', (done) => {
+    const connectionOptions = configUtil.getConnectionBySourceType(config, 'mongodb');
+
+    const randomId = Math.floor(Math.random() * 10000000).toString();
+
+    const actionOptions = {
+      operation: 'updateDocuments',
+      collection: 'testcollection01',
+      filter: {
+        id: 1
+      },
+      updateOptions: {
+        $set: {
+          message: randomId
+        }
+      }
+    };
+
+    core.execute(connectionOptions, actionOptions, (err, result) => {
+      if (err !== undefined && err !== null) {
+        assert.fail(0, 1, `error while updating mongodb document(s): ${err.message}`);
+      }
+      else {
+        assert.isTrue(result.modifiedCount > 0, `expected more than 0 rows to be modified, but actual is ${result.modifiedCount}`);
       }
       done();
     });

@@ -1,11 +1,11 @@
 const assert = require('chai').assert;
 const core = require('../src/core');
 const config = require('./config');
-const configUtil = require('./config-util');
+const testUtil = require('./test-util');
 
 describe('mongodb querying', () => {
-  it('should return documents when searching mongodb', (done) => {
-    const connectionOptions = configUtil.getConnectionBySourceType(config, 'mongodb');
+  it('should return documents', (done) => {
+    const connectionOptions = testUtil.getConnectionBySourceType(config, 'mongodb');
 
     const actionOptions = {
       operation: 'queryCollection',
@@ -21,8 +21,8 @@ describe('mongodb querying', () => {
     });
   });
 
-  it('should return a single document when searching mongodb', (done) => {
-    const connectionOptions = configUtil.getConnectionBySourceType(config, 'mongodb');
+  it('should return a single document', (done) => {
+    const connectionOptions = testUtil.getConnectionBySourceType(config, 'mongodb');
 
     // this test requires that there is one document in the collection 
     // that has an id field set to the value 1
@@ -50,10 +50,10 @@ describe('mongodb querying', () => {
     });
   });
 
-  it('should insert a document into a mongodb collection', (done) => {
-    const connectionOptions = configUtil.getConnectionBySourceType(config, 'mongodb');
+  it('should insert a document', (done) => {
+    const connectionOptions = testUtil.getConnectionBySourceType(config, 'mongodb');
 
-    const randomId = Math.floor(Math.random() * 10000000);
+    const randomId = testUtil.getRandomId();
 
     const actionOptions = {
       operation: 'createDocument',
@@ -72,10 +72,10 @@ describe('mongodb querying', () => {
     });
   });
 
-  it('should update a document in a mongodb collection', (done) => {
-    const connectionOptions = configUtil.getConnectionBySourceType(config, 'mongodb');
+  it('should update a document', (done) => {
+    const connectionOptions = testUtil.getConnectionBySourceType(config, 'mongodb');
 
-    const randomId = Math.floor(Math.random() * 10000000).toString();
+    const randomId = testUtil.getRandomId().toString();
 
     const actionOptions = {
       operation: 'updateDocuments',
@@ -98,6 +98,45 @@ describe('mongodb querying', () => {
         assert.isTrue(result.modifiedCount > 0, `expected more than 0 rows to be modified, but actual is ${result.modifiedCount}`);
       }
       done();
+    });
+  });
+
+  it('should delete a document', (done) => {
+    // the logic of this test is to create a document 
+    // first and then to delete the same document to 
+    // ensure that this test has minimal dependencies
+    const connectionOptions = testUtil.getConnectionBySourceType(config, 'mongodb');
+
+    const randomId = testUtil.getRandomId();
+
+    let actionOptions = {
+      operation: 'createDocument',
+      collection: 'testcollection01',
+      document: {
+        id: randomId,
+        message: 'test document creation'
+      }
+    };
+
+    core.execute(connectionOptions, actionOptions, (err) => {
+      if (err !== undefined && err !== null) {
+        assert.fail(0, 1, `error while inserting doc into mongodb: ${err.message}`);
+      }
+
+      actionOptions = {
+        operation: 'deleteDocuments',
+        collection: 'testcollection01',
+        filter: {
+          id: randomId
+        }
+      };
+
+      core.execute(connectionOptions, actionOptions, (err, result) => {
+        if (err !== undefined && err !== null) {
+          assert.fail(0, 1, `error while deleting document: ${err.message}`);
+        }
+        done();
+      });
     });
   });
 });

@@ -1,11 +1,11 @@
 const assert = require('chai').assert;
 const core = require('../src/core');
 const config = require('./config');
-const configUtil = require('./config-util');
+const testUtil = require('./test-util');
 
 describe('documentdb querying', () => {
-  it('should return data when querying documentdb', (done) => {
-    const connectionOptions = configUtil.getConnectionBySourceType(config, 'documentdb');
+  it('should return data', (done) => {
+    const connectionOptions = testUtil.getConnectionBySourceType(config, 'documentdb');
 
     const actionOptions = {
       operation: 'queryCollection',
@@ -21,10 +21,10 @@ describe('documentdb querying', () => {
     });
   });
 
-  it('should create document in documentdb', (done) => {
-    const connectionOptions = configUtil.getConnectionBySourceType(config, 'documentdb');
+  it('should create document', (done) => {
+    const connectionOptions = testUtil.getConnectionBySourceType(config, 'documentdb');
 
-    const randomId = Math.floor(Math.random() * 10000000).toString();
+    const randomId = testUtil.getRandomId().toString();
 
     const actionOptions = {
       operation: 'createDocument',

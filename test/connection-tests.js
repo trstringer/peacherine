@@ -1,7 +1,7 @@
 const assert = require('chai').assert;
 const core = require('../src/core');
 const config = require('./config');
-const configUtil = require('./config-util');
+const testUtil = require('./test-util');
 
 describe('connections functionality', () => {
   it('should fail connection to fake data source', (done) => {
@@ -34,7 +34,7 @@ describe('connections functionality', () => {
   });
 
   it('should successfully connect to mssql', (done) => {
-    const connectionOptions = configUtil.getConnectionBySourceType(config, 'mssql');
+    const connectionOptions = testUtil.getConnectionBySourceType(config, 'mssql');
 
     core.testConnection(connectionOptions, (err) => {
       if (err !== undefined && err !== null) {
@@ -45,7 +45,7 @@ describe('connections functionality', () => {
   });
 
   it('should successfully connect to documentdb', (done) => {
-    const connectionOptions = configUtil.getConnectionBySourceType(config, 'documentdb');
+    const connectionOptions = testUtil.getConnectionBySourceType(config, 'documentdb');
     
     core.testConnection(connectionOptions, (err) => {
       if (err !== undefined && err !== null) {
@@ -56,7 +56,7 @@ describe('connections functionality', () => {
   });
 
   it('should successfully connect to mongodb', (done) => {
-    const connectionOptions = configUtil.getConnectionBySourceType(config, 'mongodb');
+    const connectionOptions = testUtil.getConnectionBySourceType(config, 'mongodb');
 
     core.testConnection(connectionOptions, (err) => {
       if (err !== undefined && err !== null) {

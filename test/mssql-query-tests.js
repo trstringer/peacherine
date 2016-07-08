@@ -1,11 +1,11 @@
 const assert = require('chai').assert;
 const core = require('../src/core');
 const config = require('./config');
-const configUtil = require('./config-util');
+const testUtil = require('./test-util');
 
 describe('mssql querying', () => {
   it('should return data when querying mssql', (done) => {
-    const connectionOptions = configUtil.getConnectionBySourceType(config, 'mssql');
+    const connectionOptions = testUtil.getConnectionBySourceType(config, 'mssql');
 
     const actionOptions = {
       query: 'SELECT object_id, name FROM sys.objects'

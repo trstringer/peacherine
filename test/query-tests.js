@@ -78,4 +78,33 @@ describe('querying', () => {
       done();
     });
   });
+
+  it('should return a single document when searching mongodb', (done) => {
+    const connectionOptions = configUtil.getConnectionBySourceType(config, 'mongodb');
+
+    // this test requires that there is one document in the collection 
+    // that has an id field set to the value 1
+    //
+    // these mongo shell commands would seed that successfully
+    // $ mongo
+    // $ use <database-name>
+    // $ db.testcollection01.insertOne({id: 1, message: 'hello world'})
+    //
+    // todo: remove this test dependency
+    const actionOptions = {
+      operation: 'queryCollection',
+      collection: 'testcollection01',
+      condition: {
+        id: 1
+      }
+    };
+
+    core.execute(connectionOptions, actionOptions, (err, results) => {
+      if (err !== undefined && err !== null) {
+        assert.fail(0, 1, `error while querying collection in mongodb: ${err.message}`);
+      }
+      assert.equal(results.length, 1);
+      done();
+    });
+  });
 });

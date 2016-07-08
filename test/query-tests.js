@@ -107,4 +107,26 @@ describe('querying', () => {
       done();
     });
   });
+
+  it('should insert a document into a mongodb collection', (done) => {
+    const connectionOptions = configUtil.getConnectionBySourceType(config, 'mongodb');
+
+    const randomId = Math.floor(Math.random() * 10000000);
+
+    const actionOptions = {
+      operation: 'createDocument',
+      collection: 'testcollection01',
+      document: {
+        id: randomId,
+        message: 'test document creation'
+      }
+    };
+
+    core.execute(connectionOptions, actionOptions, (err) => {
+      if (err !== undefined && err !== null) {
+        assert.fail(0, 1, `error while creating document in mongodb: ${err.message}`);
+      }
+      done();
+    });
+  });
 });

@@ -19,10 +19,34 @@ module.exports = (() => {
       case 'queryCollection':
         queryCollection(connectionOptions, actionOptions, callback);
         break;
+      case 'createDocument':
+        createDocument(connectionOptions, actionOptions, callback);
+        break;
       default:
         callback(new Error(`unknown operation: ${actionOptions.operation}`));
         break;
     }
+  }
+
+  function createDocument(connectionOptions, actionOptions, callback) {
+    const connectionUrl = getConnectionUrl(connectionOptions);
+
+    MongoClient.connect(connectionUrl, (err, db) => {
+      if (err) {
+        callback(err);
+      }
+      else {
+        db.collection(actionOptions.collection).insertOne(actionOptions.document, (err, result) => {
+          if (err) {
+            callback(err);
+          }
+          else {
+            db.close();
+            callback();
+          }
+        });
+      }
+    });
   }
 
   function queryCollection(connectionOptions, actionOptions, callback) {

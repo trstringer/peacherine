@@ -25,10 +25,34 @@ module.exports = (() => {
       case 'updateDocuments':
         updateDocuments(connectionOptions, actionOptions, callback);
         break;
+      case 'deleteDocuments':
+        deleteDocuments(connectionOptions, actionOptions, callback);
+        break;
       default:
         callback(new Error(`unknown operation: ${actionOptions.operation}`));
         break;
     }
+  }
+
+  function deleteDocuments(connectionOptions, actionOptions, callback) {
+    const connectionUrl = getConnectionUrl(connectionOptions);
+
+    MongoClient.connect(connectionUrl, (err, db) => {
+      if (err) {
+        callback(err);
+      }
+      else {
+        db.collection(actionOptions.collection).deleteMany(actionOptions.filter, (err, result) => {
+          if (err) {
+            callback(err);
+          }
+          else {
+            db.close();
+            callback(null, result);
+          }
+        });
+      }
+    });
   }
 
   function updateDocuments(connectionOptions, actionOptions, callback) {

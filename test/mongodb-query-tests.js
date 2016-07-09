@@ -135,6 +135,7 @@ describe('mongodb querying', () => {
         if (err !== undefined && err !== null) {
           assert.fail(0, 1, `error while deleting document: ${err.message}`);
         }
+        assert.equal(result.deletedCount, 1, `expected deleted count to be 1 but returned ${result.deletedCount}`);
         done();
       });
     });

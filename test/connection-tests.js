@@ -37,7 +37,7 @@ describe('connections functionality', () => {
     const connectionOptions = testUtil.getConnectionBySourceType(config, 'mssql');
 
     core.testConnection(connectionOptions, (err) => {
-      if (err !== undefined && err !== null) {
+      if (err) {
         assert.fail(0, 1, 'error on connection was expected to not error');
       }
       done();
@@ -48,7 +48,7 @@ describe('connections functionality', () => {
     const connectionOptions = testUtil.getConnectionBySourceType(config, 'documentdb');
     
     core.testConnection(connectionOptions, (err) => {
-      if (err !== undefined && err !== null) {
+      if (err) {
         assert.fail(0, 1, 'error on connection was expected to not error');
       }
       done();
@@ -59,7 +59,7 @@ describe('connections functionality', () => {
     const connectionOptions = testUtil.getConnectionBySourceType(config, 'mongodb');
 
     core.testConnection(connectionOptions, (err) => {
-      if (err !== undefined && err !== null) {
+      if (err) {
         assert.fail(0, 1, `error connecting to mongodb: ${err.message}`);
       }
       done();

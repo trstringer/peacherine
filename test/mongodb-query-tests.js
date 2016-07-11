@@ -13,7 +13,7 @@ describe('mongodb querying', () => {
     };
 
     core.execute(connectionOptions, actionOptions, (err, results) => {
-      if (err !== undefined && err !== null) {
+      if (err) {
         assert.fail(0, 1, `error while querying collection in mongodb: ${err.message}`);
       }
       assert.isTrue(results.length > 0);
@@ -42,7 +42,7 @@ describe('mongodb querying', () => {
     };
 
     core.execute(connectionOptions, actionOptions, (err, results) => {
-      if (err !== undefined && err !== null) {
+      if (err) {
         assert.fail(0, 1, `error while querying collection in mongodb: ${err.message}`);
       }
       assert.equal(results.length, 1);
@@ -65,7 +65,7 @@ describe('mongodb querying', () => {
     };
 
     core.execute(connectionOptions, actionOptions, (err) => {
-      if (err !== undefined && err !== null) {
+      if (err) {
         assert.fail(0, 1, `error while creating document in mongodb: ${err.message}`);
       }
       done();
@@ -91,7 +91,7 @@ describe('mongodb querying', () => {
     };
 
     core.execute(connectionOptions, actionOptions, (err, result) => {
-      if (err !== undefined && err !== null) {
+      if (err) {
         assert.fail(0, 1, `error while updating mongodb document(s): ${err.message}`);
       }
       else {
@@ -119,7 +119,7 @@ describe('mongodb querying', () => {
     };
 
     core.execute(connectionOptions, actionOptions, (err) => {
-      if (err !== undefined && err !== null) {
+      if (err) {
         assert.fail(0, 1, `error while inserting doc into mongodb: ${err.message}`);
       }
 
@@ -132,7 +132,7 @@ describe('mongodb querying', () => {
       };
 
       core.execute(connectionOptions, actionOptions, (err, result) => {
-        if (err !== undefined && err !== null) {
+        if (err) {
           assert.fail(0, 1, `error while deleting document: ${err.message}`);
         }
         assert.equal(result.deletedCount, 1, `expected deleted count to be 1 but returned ${result.deletedCount}`);

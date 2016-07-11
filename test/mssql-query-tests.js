@@ -12,7 +12,7 @@ describe('mssql querying', () => {
     };
 
     core.execute(connectionOptions, actionOptions, (err, results, rowsAffected) => {
-      if (err !== undefined && err !== null) {
+      if (err) {
         assert.fail(0, 1, 'error returned when querying mssql');
       }
       // we can't do any assertion on recordset (in case of DML) 

@@ -14,7 +14,7 @@ describe('documentdb querying', () => {
     };
 
     core.execute(connectionOptions, actionOptions, (err, results) => {
-      if (err !== undefined && err !== null) {
+      if (err) {
         assert.fail(0, 1, `error returned querying documentdb: ${err.message}`);
       }
       done();
@@ -36,7 +36,7 @@ describe('documentdb querying', () => {
     };
 
     core.execute(connectionOptions, actionOptions, (err, results) => {
-      if (err !== undefined && err !== null) {
+      if (err) {
         assert.fail(0, 1, `error while inserting document in documentdb: ${err.message}`);
       }
       done();

@@ -65,4 +65,15 @@ describe('connections functionality', () => {
       done();
     });
   });
+
+  it('should successfully connect to mysql', (done) => {
+    const connectionOptions = testUtil.getConnectionBySourceType(config, 'mysql');
+
+    core.testConnection(connectionOptions, (err) => {
+      if (err) {
+        assert.fail(0, 1, `error connecting to mysql: ${err.message}`);
+      }
+      done();
+    });
+  });
 });

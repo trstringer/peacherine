@@ -30,6 +30,13 @@ module.exports = {
       host: '...',
       port: 27017,
       database: '...'
+    },
+    {
+      dataSourceType: 'mysql',
+      server: '...',
+      database: '...',
+      username: '...',
+      password: '...'
     }
   ]
 };

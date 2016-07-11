@@ -16,6 +16,7 @@
   "dependencies": {
     "documentdb": "^1.8.0",
     "mongodb": "^2.1.18",
-    "mssql": "^3.3.0"
+    "mssql": "^3.3.0",
+    "mysql": "^2.11.1"
   }
 }

@@ -4,24 +4,24 @@
 
  - [Why?](#why)
  - [Install](#install)
- - Supported data sources
-  - [SQL Server and SQL Azure](#sql-server-and-sql-azure)
-   - Run query
-   - Test connection
-  - [Azure DocumentDB](#azure-documentdb)
-   - Query collection
-   - Insert document
-   - Test connection
-  - [MongoDB](#mongodb)
-   - Query collection
-   - Query collection with filter
-   - Insert document
-   - Update document
-   - Delete document
-   - Test connection
-  - [MySQL](#mysql)
-   - Run query
-   - Test connection
+ - Supported data sources(#supported-data-sources)
+   - [SQL Server and SQL Azure](#sql-server-and-sql-azure)
+     - Run query
+     - Test connection
+   - [Azure DocumentDB](#azure-documentdb)
+     - Query collection
+     - Insert document
+     - Test connection
+   - [MongoDB](#mongodb)
+     - Query collection
+     - Query collection with filter
+     - Insert document
+     - Update document
+     - Delete document
+     - Test connection
+   - [MySQL](#mysql)
+     - Run query
+     - Test connection
  - [Test and contribute](#test)
 
 ### Why?

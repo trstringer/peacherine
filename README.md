@@ -1,27 +1,31 @@
-# Peacherinee
+# Peacherine
 
 ***The cross-platform and multi-datasource query module***
+
+*Want to see support for another data source type? Open an issue so that it can be prioritized and tracked*
+
+**Future development: continue to add popular database management systems (SQL, NoSQL, whatever...)**
 
  - [Why?](#why)
  - [Install](#install)
  - [Supported data sources](#supported-data-sources)
    - [SQL Server and SQL Azure](#sql-server-and-sql-azure)
-     - Run query
-     - Test connection
+     - [Run query](#run-query-sql)
+     - [Test connection](#test-connection-sql)
    - [Azure DocumentDB](#azure-documentdb)
-     - Query collection
-     - Insert document
-     - Test connection
+     - [Query collection](#query-collection-documentdb)
+     - [Insert document](#insert-document-documentdb)
+     - [Test connection](#test-connection-documentdb)
    - [MongoDB](#mongodb)
-     - Query collection
-     - Query collection with filter
-     - Insert document
-     - Update document
-     - Delete document
-     - Test connection
+     - [Query collection](#query-all-documents-mongodb)
+     - [Query collection with filter](#query-documents-in-collection-with-filter-mongodb)
+     - [Insert document](#insert-document-mongodb)
+     - [Update document](#update-document-mongodb)
+     - [Delete document](#delete-document-mongodb)
+     - [Test connection](#test-connectiono-mongodb)
    - [MySQL](#mysql)
-     - Run query
-     - Test connection
+     - [Run query](#run-query-mysql)
+     - [Test connection](#test-connection-mysql)
  - [Test and contribute](#test)
 
 ### Why?
@@ -47,7 +51,7 @@ const supportedDataSources = peacherine.getDataSourceTypes();
 
 # SQL Server and SQL Azure
 
-## Run query
+## Run query (SQL)
 
 ```javascript
 const peacherine = require('peacherine');
@@ -69,7 +73,7 @@ peacherine.run(connectionOptions, actionOptions, (err, results) => {
 });
 ```
 
-## Test connection
+## Test connection (SQL)
 
 ```javascript
 const peacherine = require('peacherine');
@@ -94,7 +98,7 @@ peacherine.testConnection(connectionOptions, (err) => {
 
 # Azure DocumentDB
 
-## Query collection
+## Query collection (DocumentDB)
 
 ```javascript
 const peacherine = require('peacherine');
@@ -117,7 +121,7 @@ peacherine.run(connectionOptions, actionOptions, (err, results) => {
 });
 ```
 
-## Insert document in collection
+## Insert document (DocumentDB)
 
 ```javascript
 const peacherine = require('peacherine');
@@ -143,7 +147,7 @@ peacherine.run(connectionOptions, actionOptions, (err, results) => {
 });
 ```
 
-## Test connection
+## Test connection (DocumentDB)
 
 ```javascript
 const peacherine = require('peacherine');
@@ -167,7 +171,7 @@ peacherine.testConnection(connectionOptions, (err) => {
 
 # MongoDB
 
-## Query all documents in collection
+## Query all documents (MongoDB)
 
 ```javascript
 const peacherine = require('peacherine');
@@ -189,7 +193,7 @@ peacherine.run(connectionOptions, actionOptions, (err, results) => {
 });
 ```
 
-## Query documents in collection with filter
+## Query documents in collection with filter (MongoDB)
 
 ```javascript
 const peacherine = require('peacherine');
@@ -214,7 +218,7 @@ peacherine.run(connectionOptions, actionOptions, (err, results) => {
 });
 ```
 
-## Insert a document
+## Insert document (MongoDB)
 
 ```javascript
 const peacherine = require('peacherine');
@@ -240,7 +244,7 @@ peacherine.run(connectionOptions, actionOptions, (err) => {
 });
 ```
 
-## Update a document
+## Update document (MongoDB)
 
 ```javascript
 const peacherine = require('peacherine');
@@ -270,7 +274,7 @@ peacherine.run(connectionOptions, actionOptions, (err, result) => {
 });
 ```
 
-## Delete a document
+## Delete document (MongoDB)
 
 ```javascript
 const peacherine = require('peacherine');
@@ -295,7 +299,7 @@ peacherine.run(connectionOptions, actionOptions, (err, result) => {
 });
 ```
 
-## Test connection
+## Test connection (MongoDB)
 
 ```javascript
 const peacherine = require('peacherine');
@@ -319,7 +323,7 @@ peacherine.testConnection(connectionOptions, (err) => {
 
 # MySQL
 
-## Run query
+## Run query (MySQL)
 
 ```javascript
 const peacherine = require('peacherine');
@@ -341,7 +345,7 @@ peacherine.run(connectionOptions, actionOptions, (err, results) => {
 });
 ```
 
-## Test connection
+## Test connection (MySQL)
 
 ```javascript
 const peacherine = require('peacherine');

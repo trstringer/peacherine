@@ -1,4 +1,4 @@
-# Syncopation
+# Peacherinee
 
 ***The cross-platform and multi-datasource query module***
 
@@ -18,7 +18,7 @@ I think you should be able to query all mainstream data sources from any machine
 ### Install
 
 ```
-$ npm install syncopation
+$ npm install peacherine
 ```
 
 ## Supported data sources
@@ -66,8 +66,8 @@ $ npm install syncopation
 Want to contribute?  Clone the repo and use `npm test` to run unit tests
 
 ```
-$ git clone https://github.com/tstringer/syncopation.git
-$ cd syncopation
+$ git clone https://github.com/tstringer/peacherine.git
+$ cd peacherine
 $ npm install
 $ npm test
 ```

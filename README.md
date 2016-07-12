@@ -22,7 +22,7 @@
      - [Insert document](#insert-document-mongodb)
      - [Update document](#update-document-mongodb)
      - [Delete document](#delete-document-mongodb)
-     - [Test connection](#test-connectiono-mongodb)
+     - [Test connection](#test-connection-mongodb)
    - [MySQL](#mysql)
      - [Run query](#run-query-mysql)
      - [Test connection](#test-connection-mysql)

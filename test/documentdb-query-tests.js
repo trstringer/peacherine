@@ -31,7 +31,7 @@ describe('documentdb querying', () => {
       collection: 'testcollection01',
       document: {
         id: randomId,
-        message: "test document creation"
+        message: 'test document creation'
       }
     };
 

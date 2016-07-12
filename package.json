@@ -18,5 +18,18 @@
     "mongodb": "^2.1.18",
     "mssql": "^3.3.0",
     "mysql": "^2.11.1"
+  },
+  "keywords": [
+    "mssql",
+    "documentdb",
+    "mysql",
+    "mongodb",
+    "data",
+    "sql",
+    "nosql"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tstringer/peacherine.git"
   }
 }

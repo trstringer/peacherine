@@ -6,10 +6,23 @@
  - [Install](#install)
  - Supported data sources
   - [SQL Server and SQL Azure](#sql-server-and-sql-azure)
+   - Run query
+   - Test connection
   - [Azure DocumentDB](#azure-documentdb)
+   - Query collection
+   - Insert document
+   - Test connection
   - [MongoDB](#mongodb)
+   - Query collection
+   - Query collection with filter
+   - Insert document
+   - Update document
+   - Delete document
+   - Test connection
   - [MySQL](#mysql)
- - [Test](#test)
+   - Run query
+   - Test connection
+ - [Test and contribute](#test)
 
 ### Why?
 
@@ -23,7 +36,7 @@ $ npm install peacherine
 
 ## Supported data sources
 
-#### Get supported data sources
+### Get supported data sources
 
 ```javascript
 const peacherine = require('peacherine');
@@ -32,9 +45,9 @@ const supportedDataSources = peacherine.getDataSourceTypes();
 // returns a string array of data source types
 ```
 
-### SQL Server and SQL Azure
+# SQL Server and SQL Azure
 
-#### Run query
+## Run query
 
 ```javascript
 const peacherine = require('peacherine');
@@ -56,7 +69,7 @@ peacherine.run(connectionOptions, actionOptions, (err, results) => {
 });
 ```
 
-#### Test connection
+## Test connection
 
 ```javascript
 const peacherine = require('peacherine');
@@ -79,9 +92,9 @@ peacherine.testConnection(connectionOptions, (err) => {
 });
 ```
 
-### Azure DocumentDB
+# Azure DocumentDB
 
-#### Query collection
+## Query collection
 
 ```javascript
 const peacherine = require('peacherine');
@@ -104,7 +117,7 @@ peacherine.run(connectionOptions, actionOptions, (err, results) => {
 });
 ```
 
-#### Insert document in collection
+## Insert document in collection
 
 ```javascript
 const peacherine = require('peacherine');
@@ -130,9 +143,31 @@ peacherine.run(connectionOptions, actionOptions, (err, results) => {
 });
 ```
 
-### MongoDB
+## Test connection
 
-#### Query all documents in collection
+```javascript
+const peacherine = require('peacherine');
+
+const connectionOptions = {
+  dataSourceType: 'documentdb',
+  endpoint: 'https://...documents.azure.com:.../',
+  key: '...',
+  database: '...'
+};
+
+peacherine.testConnection(connectionOptions, (err) => {
+  if (err) {
+    // failed connection
+  }
+  else {
+    // successful connection
+  }
+});
+```
+
+# MongoDB
+
+## Query all documents in collection
 
 ```javascript
 const peacherine = require('peacherine');
@@ -154,7 +189,7 @@ peacherine.run(connectionOptions, actionOptions, (err, results) => {
 });
 ```
 
-#### Query documents in collection with filter
+## Query documents in collection with filter
 
 ```javascript
 const peacherine = require('peacherine');
@@ -179,7 +214,7 @@ peacherine.run(connectionOptions, actionOptions, (err, results) => {
 });
 ```
 
-#### Insert a document
+## Insert a document
 
 ```javascript
 const peacherine = require('peacherine');
@@ -205,7 +240,7 @@ peacherine.run(connectionOptions, actionOptions, (err) => {
 });
 ```
 
-#### Update a document
+## Update a document
 
 ```javascript
 const peacherine = require('peacherine');
@@ -235,7 +270,7 @@ peacherine.run(connectionOptions, actionOptions, (err, result) => {
 });
 ```
 
-#### Delete a document
+## Delete a document
 
 ```javascript
 const peacherine = require('peacherine');
@@ -260,9 +295,31 @@ peacherine.run(connectionOptions, actionOptions, (err, result) => {
 });
 ```
 
-### MySQL
+## Test connection
 
-#### Run query
+```javascript
+const peacherine = require('peacherine');
+
+const connectionOptions = {
+  dataSourceType: 'mongodb',
+  host: '...',
+  port: 27017,
+  database: '...'
+};
+
+peacherine.testConnection(connectionOptions, (err) => {
+  if (err) {
+    // failed connection
+  }
+  else {
+    // successful connection
+  }
+});
+```
+
+# MySQL
+
+## Run query
 
 ```javascript
 const peacherine = require('peacherine');
@@ -284,7 +341,30 @@ peacherine.run(connectionOptions, actionOptions, (err, results) => {
 });
 ```
 
-### Test
+## Test connection
+
+```javascript
+const peacherine = require('peacherine');
+
+const connectionOptions = {
+  dataSourceType: 'mysql',
+  server: '...',
+  database: '...',
+  username: '...',
+  password: '...'
+};
+
+peacherine.testConnection(connectionOptions, (err) => {
+  if (err) {
+    // failed connection
+  }
+  else {
+    // successful connection
+  }
+});
+```
+
+# Test
 
 Want to contribute?  Clone the repo and use `npm test` to run unit tests
 

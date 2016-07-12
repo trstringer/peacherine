@@ -22,7 +22,7 @@ module.exports = (() => {
     });
   }
 
-  function execute(connectionOptions, actionOptions, callback) {
+  function run(connectionOptions, actionOptions, callback) {
     const mysqlConnectionOptions = {
       host: connectionOptions.server,
       database: connectionOptions.database,
@@ -37,6 +37,6 @@ module.exports = (() => {
   
   return {
     testConnection,
-    execute
+    run
   };
 })();

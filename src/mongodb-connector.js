@@ -14,7 +14,7 @@ module.exports = (() => {
     return `mongodb://${connectionOptions.host}:${connectionOptions.port}/${connectionOptions.database}`;
   }
 
-  function execute(connectionOptions, actionOptions, callback) {
+  function run(connectionOptions, actionOptions, callback) {
     switch (actionOptions.operation) {
       case 'queryCollection':
         queryCollection(connectionOptions, actionOptions, callback);
@@ -122,6 +122,6 @@ module.exports = (() => {
   
   return {
     testConnection,
-    execute
+    run
   };
 })();

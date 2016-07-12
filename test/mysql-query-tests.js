@@ -11,7 +11,7 @@ describe('mysql querying', () => {
       query: 'SELECT * FROM information_schema.tables'
     };
 
-    core.execute(connectionOptions, actionOptions, (err, results) => {
+    core.run(connectionOptions, actionOptions, (err, results) => {
       if (err) {
         assert.fail(0, 1, `error querying mysql: ${err.message}`);
       }

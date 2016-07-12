@@ -17,7 +17,7 @@ module.exports = (() => {
     sqlConnection.connect(callback);
   }
 
-  function execute(connectionOptions, actionOptions, callback) {
+  function run(connectionOptions, actionOptions, callback) {
     const mssqlConnectionOptions = {
       user: connectionOptions.username,
       password: connectionOptions.password,
@@ -43,6 +43,6 @@ module.exports = (() => {
   
   return {
     testConnection,
-    execute
+    run
   };
 })();

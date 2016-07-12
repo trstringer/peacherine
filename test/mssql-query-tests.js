@@ -11,7 +11,7 @@ describe('mssql querying', () => {
       query: 'SELECT object_id, name FROM sys.objects'
     };
 
-    core.execute(connectionOptions, actionOptions, (err, results, rowsAffected) => {
+    core.run(connectionOptions, actionOptions, (err, results, rowsAffected) => {
       if (err) {
         assert.fail(0, 1, 'error returned when querying mssql');
       }

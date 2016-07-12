@@ -12,7 +12,7 @@ describe('mongodb querying', () => {
       collection: 'testcollection01'
     };
 
-    core.execute(connectionOptions, actionOptions, (err, results) => {
+    core.run(connectionOptions, actionOptions, (err, results) => {
       if (err) {
         assert.fail(0, 1, `error while querying collection in mongodb: ${err.message}`);
       }
@@ -41,7 +41,7 @@ describe('mongodb querying', () => {
       }
     };
 
-    core.execute(connectionOptions, actionOptions, (err, results) => {
+    core.run(connectionOptions, actionOptions, (err, results) => {
       if (err) {
         assert.fail(0, 1, `error while querying collection in mongodb: ${err.message}`);
       }
@@ -64,7 +64,7 @@ describe('mongodb querying', () => {
       }
     };
 
-    core.execute(connectionOptions, actionOptions, (err) => {
+    core.run(connectionOptions, actionOptions, (err) => {
       if (err) {
         assert.fail(0, 1, `error while creating document in mongodb: ${err.message}`);
       }
@@ -90,7 +90,7 @@ describe('mongodb querying', () => {
       }
     };
 
-    core.execute(connectionOptions, actionOptions, (err, result) => {
+    core.run(connectionOptions, actionOptions, (err, result) => {
       if (err) {
         assert.fail(0, 1, `error while updating mongodb document(s): ${err.message}`);
       }
@@ -118,7 +118,7 @@ describe('mongodb querying', () => {
       }
     };
 
-    core.execute(connectionOptions, actionOptions, (err) => {
+    core.run(connectionOptions, actionOptions, (err) => {
       if (err) {
         assert.fail(0, 1, `error while inserting doc into mongodb: ${err.message}`);
       }
@@ -131,7 +131,7 @@ describe('mongodb querying', () => {
         }
       };
 
-      core.execute(connectionOptions, actionOptions, (err, result) => {
+      core.run(connectionOptions, actionOptions, (err, result) => {
         if (err) {
           assert.fail(0, 1, `error while deleting document: ${err.message}`);
         }

@@ -13,7 +13,7 @@ describe('documentdb querying', () => {
       collection: 'testcollection01'
     };
 
-    core.execute(connectionOptions, actionOptions, (err, results) => {
+    core.run(connectionOptions, actionOptions, (err, results) => {
       if (err) {
         assert.fail(0, 1, `error returned querying documentdb: ${err.message}`);
       }
@@ -35,7 +35,7 @@ describe('documentdb querying', () => {
       }
     };
 
-    core.execute(connectionOptions, actionOptions, (err, results) => {
+    core.run(connectionOptions, actionOptions, (err, results) => {
       if (err) {
         assert.fail(0, 1, `error while inserting document in documentdb: ${err.message}`);
       }

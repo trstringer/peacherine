@@ -35,19 +35,19 @@ module.exports = (() => {
     }
   }
 
-  function execute(connectionOptions, actionOptions, callback) {
+  function run(connectionOptions, actionOptions, callback) {
     switch (connectionOptions.dataSourceType) {
       case 'mssql':
-        mssqlConnector.execute(connectionOptions, actionOptions, callback);
+        mssqlConnector.run(connectionOptions, actionOptions, callback);
         break;
       case 'documentdb':
-        documentdbConnector.execute(connectionOptions, actionOptions, callback);
+        documentdbConnector.run(connectionOptions, actionOptions, callback);
         break;
       case 'mongodb':
-        mongodbConnector.execute(connectionOptions, actionOptions, callback);
+        mongodbConnector.run(connectionOptions, actionOptions, callback);
         break;
       case 'mysql':
-        mysqlConnector.execute(connectionOptions, actionOptions, callback);
+        mysqlConnector.run(connectionOptions, actionOptions, callback);
         break;
       default:
         callback(new Error(`unknown data source type ${connectionOptions.dataSourceType}`));
@@ -58,6 +58,6 @@ module.exports = (() => {
   return {
     getDataSourceTypes,
     testConnection,
-    execute
+    run
   };
 })();

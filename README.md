@@ -4,7 +4,7 @@
 
  - [Why?](#why)
  - [Install](#install)
- - Supported data sources(#supported-data-sources)
+ - [Supported data sources](#supported-data-sources)
    - [SQL Server and SQL Azure](#sql-server-and-sql-azure)
      - Run query
      - Test connection

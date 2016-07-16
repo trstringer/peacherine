@@ -29,7 +29,9 @@ module.exports = {
       dataSourceType: 'mongodb',
       host: '...',
       port: 27017,
-      database: '...'
+      database: '...',
+      username: '...', // credentials optional
+      password: '...'  // credentials optional
     },
     {
       dataSourceType: 'mysql',

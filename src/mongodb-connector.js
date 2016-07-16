@@ -4,14 +4,16 @@ module.exports = (() => {
   function testConnection(connectionOptions, callback) {
     const connectionUrl = getConnectionUrl(connectionOptions);
 
-    MongoClient.connect(connectionUrl, (err, db) => {
+    MongoClient.connect(connectionUrl, {uri_decode_auth: true} , (err, db) => {
       callback(err);
       db.close();
     });
   }
 
   function getConnectionUrl(connectionOptions) {
-    return `mongodb://${connectionOptions.host}:${connectionOptions.port}/${connectionOptions.database}`;
+    const creds = connectionOptions.username && connectionOptions.password ?
+      `${connectionOptions.username}:${encodeURIComponent(connectionOptions.password)}@` : '';
+    return `mongodb://${creds}${connectionOptions.host}:${connectionOptions.port}/${connectionOptions.database}`;
   }
 
   function run(connectionOptions, actionOptions, callback) {
@@ -37,7 +39,7 @@ module.exports = (() => {
   function deleteDocuments(connectionOptions, actionOptions, callback) {
     const connectionUrl = getConnectionUrl(connectionOptions);
 
-    MongoClient.connect(connectionUrl, (err, db) => {
+    MongoClient.connect(connectionUrl, {uri_decode_auth: true} , (err, db) => {
       if (err) {
         callback(err);
       }
@@ -58,7 +60,7 @@ module.exports = (() => {
   function updateDocuments(connectionOptions, actionOptions, callback) {
     const connectionUrl = getConnectionUrl(connectionOptions);
 
-    MongoClient.connect(connectionUrl, (err, db) => {
+    MongoClient.connect(connectionUrl, {uri_decode_auth: true} , (err, db) => {
       if (err) {
         callback(err);
       }
@@ -79,7 +81,7 @@ module.exports = (() => {
   function createDocument(connectionOptions, actionOptions, callback) {
     const connectionUrl = getConnectionUrl(connectionOptions);
 
-    MongoClient.connect(connectionUrl, (err, db) => {
+    MongoClient.connect(connectionUrl, {uri_decode_auth: true} , (err, db) => {
       if (err) {
         callback(err);
       }
@@ -101,7 +103,7 @@ module.exports = (() => {
     const filter = actionOptions.filter || {};
     const connectionUrl = getConnectionUrl(connectionOptions);
 
-    MongoClient.connect(connectionUrl, (err, db) => {
+    MongoClient.connect(connectionUrl, {uri_decode_auth: true} , (err, db) => {
       if (err) {
         callback(err);
       }

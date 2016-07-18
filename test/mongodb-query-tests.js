@@ -109,7 +109,7 @@ describe('mongodb querying', () => {
 
     const randomId = testUtil.getRandomId();
 
-    let actionOptions = {
+    var actionOptions = {
       operation: 'createDocument',
       collection: 'testcollection01',
       document: {

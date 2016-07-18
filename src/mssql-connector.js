@@ -35,7 +35,7 @@ module.exports = (() => {
         callback(err);
       }
       else {
-        let sqlRequest = new mssql.Request(sqlConnection);
+        var sqlRequest = new mssql.Request(sqlConnection);
         sqlRequest.query(actionOptions.query, callback);
       }
     });
